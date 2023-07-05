@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cky4egrf14yex"]
+
+[ext_resource type="PackedScene" uid="uid://cmihr6jtax37u" path="res://assets/tiles/ground.tscn" id="1_5nks7"]
+[ext_resource type="Script" path="res://scripts/PathSpawnerScript.gd" id="2_tlr5y"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(581, 316)
+
+[node name="TileMap" parent="." instance=ExtResource("1_5nks7")]
+position = Vector2(3, 1)
+metadata/_edit_lock_ = true
+
+[node name="PathSpawner" type="Node2D" parent="."]
+script = ExtResource("2_tlr5y")
+
+[node name="Timer" type="Timer" parent="PathSpawner"]
+autostart = true
+
+[connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
