@@ -14,3 +14,4 @@ script = ExtResource("3_vh5yo")
 autostart = true
 
 [connection signal="timeout" from="PathSpawner/Timer" to="PathSpawner" method="_on_timer_timeout"]
+
