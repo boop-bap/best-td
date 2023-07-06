@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cabbkcg8nyu3j"]
 
-[ext_resource type="Texture2D" uid="uid://dap2mfl34me1i" path="res://icon.svg" id="1_32dlm"]
-[ext_resource type="Script" path="res://scripts/TestSprite.gd" id="1_uq6o5"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="1_32dlm"]
+[ext_resource type="Script" path="res://scripts/test_sprite_script.gd" id="1_uq6o5"]
 
 [node name="TestSprite" type="TileMap"]
 format = 2
