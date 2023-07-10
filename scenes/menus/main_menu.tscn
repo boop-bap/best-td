@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dow0mr4jxdjyd"]
+[gd_scene load_steps=3 format=3 uid="uid://dow0mr4jxdjyd"]
 
-[ext_resource type="Script" path="res://scripts/main_menu_script.gd" id="1_b1fdf"]
+[ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_oyxdq"]
+[ext_resource type="Texture2D" uid="uid://dtoergm3ageam" path="res://assets/main_menu_art.png" id="2_mpb2v"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -9,15 +10,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b1fdf")
+script = ExtResource("1_oyxdq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 515.0
-offset_top = 247.0
-offset_right = 624.0
-offset_bottom = 348.0
+offset_left = 384.0
+offset_top = 160.0
+offset_right = 768.0
+offset_bottom = 368.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -33,6 +34,12 @@ text = "HIGHSCORES"
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[node name="main_menu_background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(575, 318.875)
+scale = Vector2(2.05357, 1.79648)
+texture = ExtResource("2_mpb2v")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HighScores" to="." method="_on_high_scores_pressed"]

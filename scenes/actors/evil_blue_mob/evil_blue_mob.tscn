@@ -1,33 +1,33 @@
 [gd_scene load_steps=13 format=3 uid="uid://cvpxt7qf5puxf"]
 
-[ext_resource type="Texture2D" uid="uid://c1504dlw68m1l" path="res://assets/tiles/colored.png" id="1_6vior"]
-[ext_resource type="Script" path="res://scripts/evil_blue_script.gd" id="1_xo3hi"]
+[ext_resource type="Script" path="res://scenes/actors/evil_blue_mob/evil_blue_mob.gd" id="1_61git"]
+[ext_resource type="Texture2D" uid="uid://c1504dlw68m1l" path="res://assets/tiles/colored.png" id="2_fr1tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw4gy"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4kfp"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(306, 119, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5ici"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(323, 119, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c13k5"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(340, 119, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kqbc"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(357, 119, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nayvt"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(374, 119, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nl614"]
-atlas = ExtResource("1_6vior")
+atlas = ExtResource("2_fr1tn")
 region = Rect2(391, 119, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l3y4k"]
@@ -80,7 +80,7 @@ _data = {
 }
 
 [node name="evilblue" type="CharacterBody2D"]
-script = ExtResource("1_xo3hi")
+script = ExtResource("1_61git")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mw4gy")
