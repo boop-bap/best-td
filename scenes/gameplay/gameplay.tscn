@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/gameplay/path_spawner.gd" id="2_4neu1"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="2_cqr6b"]
 [ext_resource type="PackedScene" uid="uid://bg8higf7j07y" path="res://scenes/gameplay/path_2.tscn" id="2_rrrlp"]
-[ext_resource type="PackedScene" uid="uid://bywjltmsu8mdu" path="res://scenes/actors/catapult_turret/catapult_tower.tscn" id="5_bmh74"]
+[ext_resource type="PackedScene" uid="uid://bywjltmsu8mdu" path="res://scenes/actors/catapult_tower/catapult_tower.tscn" id="5_bmh74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhnx0"]
 texture = ExtResource("1_gkjvf")

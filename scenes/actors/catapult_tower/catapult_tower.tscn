@@ -1,21 +1,21 @@
 [gd_scene load_steps=11 format=3 uid="uid://bywjltmsu8mdu"]
 
-[ext_resource type="Texture2D" uid="uid://bv8hb71ittjjy" path="res://assets/colored_packed.png" id="1_ljm66"]
-[ext_resource type="Script" path="res://scenes/actors/catapult_turret/catapult_tower.gd" id="1_sci5j"]
+[ext_resource type="Script" path="res://scenes/actors/catapult_tower/catapult_tower.gd" id="1_cmf64"]
+[ext_resource type="Texture2D" uid="uid://bv8hb71ittjjy" path="res://assets/colored_packed.png" id="2_vgwqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmp7"]
 size = Vector2(15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf44i"]
-atlas = ExtResource("1_ljm66")
+atlas = ExtResource("2_vgwqn")
 region = Rect2(336, 80, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ok4"]
-atlas = ExtResource("1_ljm66")
+atlas = ExtResource("2_vgwqn")
 region = Rect2(352, 80, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0x2l"]
-atlas = ExtResource("1_ljm66")
+atlas = ExtResource("2_vgwqn")
 region = Rect2(368, 80, 15, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n60n1"]
@@ -62,7 +62,7 @@ radius = 52.55
 
 [node name="CatapultTower" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_sci5j")
+script = ExtResource("1_cmf64")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mpmp7")

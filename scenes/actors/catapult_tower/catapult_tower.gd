@@ -13,16 +13,17 @@ func _on_tower_body_entered(body):
 	if "evilBlue" in body.name:
 		var tempArray = []
 		currentTargets = get_node("Tower").get_overlapping_bodies()
-		print(currentTargets)
 		for target in currentTargets:
 			if "evilBlue" in target.name:
 				tempArray.append(target)
 				
 		var currentTarget = null
+		print(tempArray)
 		
 		for enemy in tempArray:
+			print("enemy ", enemy)
 			if currentTarget == null:
-				currentTarget = get_node("../")
+				currentTarget = enemy.get_node("../")
 			else:
 				if enemy.get_parent().get_progress() > currentTarget.get_progress():
 					currentTarget = get_node("../")
