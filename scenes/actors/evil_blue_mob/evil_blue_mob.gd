@@ -7,7 +7,7 @@ var main: Node
 
 func _ready() -> void:
 	main = get_tree().current_scene
-	$AnimatedSprite2D/animation.play(WALK_ANIMATION)
+	$AnimatedSprite2D/Animation.play(WALK_ANIMATION)
 
 func _process(delta: float):
 	get_parent().set_progress(get_parent().get_progress() + speed * delta * main.game_speed_multiplier)
