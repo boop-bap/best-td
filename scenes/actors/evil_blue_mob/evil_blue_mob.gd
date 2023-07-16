@@ -5,12 +5,30 @@ extends CharacterBody2D
 const WALK_ANIMATION: String = "walk"
 var main: Node
 
+var focused = false
+
 func _ready() -> void:
 	main = get_tree().current_scene
 	$AnimatedSprite2D/animation.play(WALK_ANIMATION)
+	self.input_pickable = true	
 
 func _process(delta: float):
 	get_parent().set_progress(get_parent().get_progress() + speed * delta * main.game_speed_multiplier)
 	if get_parent().get_progress_ratio() > 0.995:
 		main.health -= 1
 		queue_free()
+		
+func _on_input_event(_viewport, event, _shape_idx):
+	if (event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT):
+		if (focused && main.ammo > 0):
+			main.ammo -= 1
+			main.add_resources(10)
+			queue_free()
+
+func _on_mouse_entered():
+	focused = true
+func _on_mouse_exited():
+	focused = false
+
+
+
