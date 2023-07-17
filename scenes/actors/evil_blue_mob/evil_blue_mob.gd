@@ -16,3 +16,12 @@ func _process(delta: float):
 	if get_parent().get_progress_ratio() > 0.995:
 		main.health -= 1
 		queue_free()
+		
+
+func _physics_process(delta):
+	if health <= 0:
+		death()
+	
+	
+func death():
+	get_parent().get_parent().queue_free()

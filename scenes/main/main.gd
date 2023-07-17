@@ -2,7 +2,7 @@ extends Node
 
 var resources: int
 var health: int
-var game_speed_multiplier: int = 1
+var game_speed_multiplier: int = 2
 
 @onready var first_scene = preload("res://scenes/menus/main_menu.tscn")
 
