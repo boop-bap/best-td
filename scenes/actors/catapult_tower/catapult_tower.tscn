@@ -61,6 +61,7 @@ _data = {
 radius = 24.87
 
 [node name="CatapultTower" type="CharacterBody2D"]
+rotation = -1.5708
 scale = Vector2(2, 2)
 script = ExtResource("1_cmf64")
 

@@ -4,6 +4,7 @@ var bullet = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_proje
 var bulletDamage = 5
 var pathToFollowName = null
 var shootingSpeed = 100
+var currentTarget
 var shootingDelay = 1
 
 var timer = null
@@ -11,6 +12,12 @@ var canShoot = true
 
 const SHOOT = "shoot"
 
+func _process(delta):
+	if is_instance_valid(currentTarget):
+		self.look_at(currentTarget.global_position)
+	else:
+		for i in get_node("BulletContainer").get_child_count():
+			get_node("BulletContainer").get_child(i).queue_free()
 
 func _ready():
 	timer = Timer.new()
@@ -25,6 +32,7 @@ func on_timeout_complete():
 	
 func _on_tower_body_entered(body):
 	if body.name == "evilBlue":
+		currentTarget = body
 		pathToFollowName = body.get_node("../").get_parent().name
 		$AnimatedSprite2D/Animation.play(SHOOT)
 		
