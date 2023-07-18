@@ -35,12 +35,12 @@ animations = [{
 "texture": SubResource("AtlasTexture_oqnli")
 }],
 "loop": true,
-"name": &"fly",
+"name": &"spin",
 "speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_w0kqw"]
-resource_name = "fly"
+resource_name = "spin"
 length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
@@ -58,7 +58,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m6y6v"]
 _data = {
-"fly": SubResource("Animation_w0kqw")
+"spin": SubResource("Animation_w0kqw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0pr7"]
@@ -72,9 +72,11 @@ script = ExtResource("1_mi1ya")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xmnlt")
-animation = &"fly"
+animation = &"spin"
 
 [node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
+speed_scale = 10.0
+method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_m6y6v")
 }

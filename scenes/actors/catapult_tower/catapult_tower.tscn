@@ -31,7 +31,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_d0x2l")
 }],
 "loop": true,
-"name": &"Shoot",
+"name": &"shoot",
 "speed": 5.0
 }]
 
@@ -58,7 +58,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhrpm"]
-radius = 52.55
+radius = 24.87
 
 [node name="CatapultTower" type="CharacterBody2D"]
 scale = Vector2(2, 2)
@@ -73,8 +73,7 @@ position = Vector2(8, 0)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_n60n1")
-animation = &"Shoot"
-frame = 1
+animation = &"shoot"
 
 [node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
 method_call_mode = 1
@@ -89,5 +88,6 @@ shape = SubResource("CircleShape2D_uhrpm")
 
 [node name="BulletContainer" type="Node" parent="."]
 
+[connection signal="area_entered" from="Tower" to="." method="_on_tower_area_entered"]
 [connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
 [connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]

@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-@export var speed: int = 100
+@export var speed: int = 50
+var main: Node
 var health = 1
 
 const WALK_ANIMATION: String = "walk"
-var main: Node
 
 func _ready() -> void:
 	main = get_tree().current_scene
