@@ -11,7 +11,6 @@ func _ready() -> void:
 	$AnimatedSprite2D/Animation.play(SPIN)
 
 func _physics_process(delta):
-	
 	var pathSpawnerNode = get_tree().get_root().get_node("main/worldmap/PathSpawner")
 	for enemy in pathSpawnerNode.get_child_count():
 		if pathSpawnerNode.get_child(enemy).name == pathName:
@@ -22,9 +21,6 @@ func _physics_process(delta):
 			look_at(target)
 			move_and_slide()
 			
-			
-	
-
 func _on_area_2d_body_entered(body):
 	if "evilBlue" in body.name:
 		body.health -= bulletDamage

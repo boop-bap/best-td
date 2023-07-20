@@ -13,19 +13,15 @@ func _ready() -> void:
 	self.input_pickable = true
 	$AnimatedSprite2D/Animation.play(WALK_ANIMATION)
 
-
 func _process(delta: float):
-	
 	get_parent().set_progress(get_parent().get_progress() + speed * delta * main.game_speed_multiplier)
 	if get_parent().get_progress_ratio() > 0.995:
 		main.health -= 1
 		queue_free()
-		
 
 func _physics_process(delta):
 	if health <= 0:
 		death()
-	
 	
 func death():
 	get_parent().get_parent().queue_free()

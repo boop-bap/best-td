@@ -4,7 +4,6 @@ var resources: int
 var max_resources: int
 
 var health: int
-
 var max_health: int
 
 var ammo: int
