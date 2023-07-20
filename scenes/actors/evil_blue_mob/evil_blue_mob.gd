@@ -10,6 +10,7 @@ var focused = false
 
 func _ready() -> void:
 	main = get_tree().current_scene
+	self.input_pickable = true
 	$AnimatedSprite2D/Animation.play(WALK_ANIMATION)
 
 
@@ -30,6 +31,7 @@ func death():
 	get_parent().get_parent().queue_free()
 
 func _on_input_event(_viewport, event, _shape_idx):
+	print(123)
 	if (event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT):
 		if (focused && main.ammo > 0):
 			main.ammo -= 1
