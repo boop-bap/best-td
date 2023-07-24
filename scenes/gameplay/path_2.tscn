@@ -16,7 +16,8 @@ curve = SubResource("Curve2D_684xh")
 position = Vector2(5, 4)
 rotation = 0.789447
 
-[node name="evilblue" parent="PathFollow2D" instance=ExtResource("1_wsb4t")]
+[node name="evilBlue" parent="PathFollow2D" instance=ExtResource("1_wsb4t")]
 position = Vector2(3.60629, -1.4959)
 rotation = -0.785398
 up_direction = Vector2(0.707107, 0.707107)
+speed = 50

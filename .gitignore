@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+# Ignoring desktop services store
+**/.DS_Store

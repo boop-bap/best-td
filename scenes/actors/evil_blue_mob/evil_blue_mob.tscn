@@ -88,8 +88,9 @@ shape = SubResource("RectangleShape2D_mw4gy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_l3y4k")
 animation = &"Move"
+frame = 1
 
-[node name="animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
+[node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
 speed_scale = 5.7
 method_call_mode = 1
 libraries = {

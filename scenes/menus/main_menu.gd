@@ -1,8 +1,8 @@
 extends Control
 
-var main
+var main: Node
 
-func _ready():
+func _ready() -> void:
 	main = get_tree().current_scene
 
 func _on_play_pressed() -> void:

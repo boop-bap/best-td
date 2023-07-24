@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bv8hb71ittjjy" path="res://assets/colored_packed.png" id="1_gkjvf"]
 [ext_resource type="Script" path="res://scenes/gameplay/path_spawner.gd" id="2_4neu1"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="2_cqr6b"]
-[ext_resource type="PackedScene" uid="uid://bg8higf7j07y" path="res://scenes/gameplay/path_2.tscn" id="2_rrrlp"]
+[ext_resource type="PackedScene" uid="uid://bywjltmsu8mdu" path="res://scenes/actors/catapult_tower/catapult_tower.tscn" id="5_bmh74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uhnx0"]
 texture = ExtResource("1_gkjvf")
@@ -1126,8 +1126,6 @@ script = ExtResource("2_4neu1")
 [node name="Timer" type="Timer" parent="PathSpawner"]
 autostart = true
 
-[node name="Path2D" parent="." instance=ExtResource("2_rrrlp")]
-
 [node name="Resources" type="Label" parent="."]
 offset_left = 768.0
 offset_right = 880.0
@@ -1147,6 +1145,11 @@ offset_top = 400.0
 offset_right = 808.0
 offset_bottom = 423.0
 text = "Health: "
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="CatapultTower" parent="Towers" instance=ExtResource("5_bmh74")]
+position = Vector2(222, 158)
 
 [node name="Upgrade" type="Button" parent="."]
 offset_left = 800.0
