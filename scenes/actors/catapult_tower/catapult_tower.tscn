@@ -58,7 +58,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uhrpm"]
-radius = 24.87
+radius = 30.0
 
 [node name="CatapultTower" type="CharacterBody2D"]
 rotation = -1.5708

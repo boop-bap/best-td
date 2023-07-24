@@ -34,7 +34,7 @@ func start_game() -> void:
 	
 	add_child(first_scene.instantiate())
 
-func add_resources(amount: int):
+func add_resources(amount: int) -> void:
 	resources =	clamp(resources + amount, resources,max_resources)
 	
 func spend_resources(amount: int) -> bool:

@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-var target
+var pathName: String = ""
+var target: Vector2
 var speed = 30
-var pathName = ""
-var bulletDamage
+var bulletDamage: int
 
-const SPIN = "spin"
+const SPIN: String = "spin"
 
 func _ready() -> void:
 	$AnimatedSprite2D/Animation.play(SPIN)
@@ -21,7 +21,7 @@ func _physics_process(delta):
 			look_at(target)
 			move_and_slide()
 			
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(body) -> void:
 	if "evilBlue" in body.name:
 		body.health -= bulletDamage
 		print("body.health ", body.health)

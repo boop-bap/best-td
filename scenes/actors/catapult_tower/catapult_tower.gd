@@ -1,36 +1,41 @@
 extends CharacterBody2D
 
-var bullet = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_projectile.tscn")
-var bulletDamage = 5
-var pathToFollowName = null
-var shootingSpeed = 100
-var currentTarget
-var shootingDelay = 1
+var bullet: PackedScene = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_projectile.tscn")
 
-var timer = null
-var canShoot = true
+var currentTarget:CharacterBody2D
+var pathToFollowName: String
+var timer: Timer
 
-const SHOOT = "shoot"
+var shootingSpeed: int = 100
+var shootingDelay: int = 1
+var bulletDamage: int = 5
 
-func _process(delta):
+var canShoot: bool = true
+
+const SHOOT: String = "shoot"
+
+func _process(delta: float) -> void:
 	if is_instance_valid(currentTarget):
-		self.look_at(currentTarget.global_position)
+		look_at(currentTarget.global_position)
 	else:
 		for i in get_node("BulletContainer").get_child_count():
 			get_node("BulletContainer").get_child(i).queue_free()
 
-func _ready():
+func _ready() -> void:
+	initialize_timer()
+	
+func initialize_timer():
 	timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(shootingDelay)
 	timer.connect("timeout", self.on_timeout_complete)
-	
+
 	add_child(timer)
 
-func on_timeout_complete():
+func on_timeout_complete() -> void:
 	canShoot = true
 	
-func _on_tower_body_entered(body):
+func _on_tower_body_entered(body) -> void:
 	if body.name == "evilBlue":
 		currentTarget = body
 		pathToFollowName = body.get_node("../").get_parent().name
@@ -39,10 +44,10 @@ func _on_tower_body_entered(body):
 		if canShoot == true:
 			shoot()
 			
-		pathToFollowName = null
+		pathToFollowName = ""
 		
-func shoot():
-	var tempBullet = bullet.instantiate()
+func shoot() -> void:
+	var tempBullet: Node = bullet.instantiate()
 	
 	tempBullet.pathName = pathToFollowName
 	tempBullet.bulletDamage = bulletDamage
