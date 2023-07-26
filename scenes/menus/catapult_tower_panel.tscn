@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8vs73snb4y31"]
+
+[ext_resource type="Script" path="res://scenes/menus/catapult_tower_panel.gd" id="1_ejflc"]
+[ext_resource type="Texture2D" uid="uid://bv8hb71ittjjy" path="res://assets/colored_packed.png" id="2_5hctd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf44i"]
+atlas = ExtResource("2_5hctd")
+region = Rect2(336, 80, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ok4"]
+atlas = ExtResource("2_5hctd")
+region = Rect2(352, 80, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0x2l"]
+atlas = ExtResource("2_5hctd")
+region = Rect2(368, 80, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wccb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf44i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ok4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0x2l")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ffgxx"]
+resource_name = "shoot"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uc2w"]
+_data = {
+"shoot": SubResource("Animation_ffgxx")
+}
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ejflc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(20, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wccb8")
+animation = &"shoot"
+
+[node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_0uc2w")
+}
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
