@@ -1,4 +1,5 @@
-extends CharacterBody2D
+class_name Tower extends CharacterBody2D
+
 
 var bullet: PackedScene = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_projectile.tscn")
 

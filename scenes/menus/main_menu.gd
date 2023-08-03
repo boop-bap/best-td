@@ -9,7 +9,7 @@ func _on_play_pressed() -> void:
 	var gameplay: PackedScene = load("res://scenes/gameplay/gameplay.tscn")
 	var gameplay_instance: Node = gameplay.instantiate()
 	main.add_child(gameplay_instance)
-	print(gameplay_instance)
+	
 	queue_free()
 	
 func _on_high_scores_pressed() -> void:

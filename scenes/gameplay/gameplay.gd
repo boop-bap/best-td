@@ -1,9 +1,12 @@
 extends TileMap
 
 var main: Node
+var spawner: Spawner
 
 func _ready() -> void:
 	main = get_parent()
+	spawner = Spawner.new(main)	
+	add_child(spawner)
 
 func _process(_delta) -> void:
 	$Resources.text = "Resources: " + str(main.resources) + "/" + str(main.max_resources)

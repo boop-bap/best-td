@@ -1,4 +1,5 @@
-extends CharacterBody2D
+class_name Projectile extends CharacterBody2D
+
 
 var pathName: String = ""
 var target: Vector2
@@ -21,7 +22,7 @@ func _physics_process(delta):
 			look_at(target)
 			move_and_slide()
 			
-func _on_area_2d_body_entered(body) -> void:
+func _on_area_2d_body_entered(body: Mob) -> void:
 	if "evilBlue" in body.name:
 		body.health -= bulletDamage
 		print("body.health ", body.health)

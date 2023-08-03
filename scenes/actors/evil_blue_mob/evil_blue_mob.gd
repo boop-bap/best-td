@@ -1,4 +1,5 @@
-extends CharacterBody2D
+class_name Mob extends CharacterBody2D
+
 
 @export var speed: int = 50
 var health: int = 1

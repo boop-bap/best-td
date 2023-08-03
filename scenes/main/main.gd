@@ -16,7 +16,7 @@ var game_speed_multiplier: int = 1
 func _ready() -> void:
 	start_game()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		game_speed_multiplier = 3
 	if event.is_action_released("ui_accept"):
