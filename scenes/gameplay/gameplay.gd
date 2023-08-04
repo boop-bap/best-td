@@ -6,6 +6,8 @@ var spawner: Spawner
 func _ready() -> void:
 	main = get_parent()
 	spawner = Spawner.new(main)	
+	spawner.set_name("spawner")
+	
 	add_child(spawner)
 
 func _process(_delta) -> void:
