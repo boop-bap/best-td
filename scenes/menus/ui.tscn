@@ -21,26 +21,9 @@ theme_override_constants/v_separation = 35
 [node name="CatapultTower" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
 layout_mode = 2
 
-[node name="CatapultTower3" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
+[node name="CatapultTower2" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
 layout_mode = 2
 
-[node name="CatapultTower6" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower7" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower8" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower9" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower10" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower4" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
-
-[node name="CatapultTower5" parent="Panel/FlowContainer" instance=ExtResource("1_ijjr7")]
-layout_mode = 2
+[connection signal="gui_input" from="Panel" to="Panel/FlowContainer/CatapultTower" method="_on_panel_gui_input"]
+[connection signal="mouse_exited" from="Panel/FlowContainer/CatapultTower" to="Panel/FlowContainer/CatapultTower" method="_on_mouse_exited"]
+[connection signal="mouse_exited" from="Panel/FlowContainer/CatapultTower2" to="Panel/FlowContainer/CatapultTower2" method="_on_mouse_exited"]
