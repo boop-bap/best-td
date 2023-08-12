@@ -6,6 +6,8 @@ var bullet: PackedScene = preload("res://scenes/actors/bent_arrow_projectile/ben
 var currentTarget:CharacterBody2D
 var pathToFollowName: String
 var timer: Timer
+var targetArray = []
+
 
 var shootingSpeed: int = 100
 var shootingDelay: int = 1
@@ -14,6 +16,7 @@ var bulletDamage: int = 5
 var canShoot: bool = true
 
 const SHOOT: String = "shoot"
+
 
 func _process(delta: float) -> void:
 	if is_instance_valid(currentTarget):
@@ -24,33 +27,40 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	initialize_timer()
-	
+
 func initialize_timer():
 	timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(shootingDelay)
 	timer.connect("timeout", self.on_timeout_complete)
-
+	
 	add_child(timer)
 
 func on_timeout_complete() -> void:
 	canShoot = true
-	
+
 func _on_tower_body_entered(body) -> void:
 	if body.name == "evilBlue":
-		currentTarget = body
-		pathToFollowName = body.get_node("../").get_parent().name
-		$AnimatedSprite2D/Animation.play(SHOOT)
+		targetArray.push_front(body)
 		
-		if canShoot == true:
-			shoot()
+		var mobInArrayToShoot = targetArray.size() - 1
+		if mobInArrayToShoot:
 			
-		pathToFollowName = ""
-		
-func shoot() -> void:
-	var tempBullet: Node = bullet.instantiate()
+			currentTarget = targetArray[mobInArrayToShoot]
+			pathToFollowName = body.get_node("../").get_parent().name
+			
+			if canShoot == true:
+				$AnimatedSprite2D/Animation.play(SHOOT)
+				shoot(currentTarget)
+				
+
+func _on_tower_body_exited(body):
+	targetArray.erase(body)
+
+func shoot(target) -> void:
+	var tempBullet = bullet.instantiate()
+	tempBullet.target = target
 	
-	tempBullet.pathName = pathToFollowName
 	tempBullet.bulletDamage = bulletDamage
 	tempBullet.global_position = $Aim.global_position
 	
@@ -58,5 +68,5 @@ func shoot() -> void:
 	
 	canShoot = false
 	timer.start()
-	
-	
+
+

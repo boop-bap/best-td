@@ -24,7 +24,7 @@ func _input(event: InputEvent) -> void:
 	
 func start_game() -> void:
 	max_resources = 100
-	resources = 0
+	resources = 10
 	
 	max_health = 5
 	health = max_health
