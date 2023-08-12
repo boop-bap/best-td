@@ -1,7 +1,7 @@
 class_name Projectile extends CharacterBody2D
 
 
-var target
+var target: CharacterBody2D
 var speed = 300
 var bulletDamage: int
 
