@@ -42,17 +42,15 @@ func on_timeout_complete() -> void:
 func _on_tower_body_entered(body) -> void:
 	if body.name == "evilBlue":
 		targetArray.push_front(body)
-		
 		var mobInArrayToShoot = targetArray.size() - 1
+		
 		if mobInArrayToShoot:
-			
 			currentTarget = targetArray[mobInArrayToShoot]
 			pathToFollowName = body.get_node("../").get_parent().name
 			
 			if canShoot == true:
 				$AnimatedSprite2D/Animation.play(SHOOT)
 				shoot(currentTarget)
-				
 
 func _on_tower_body_exited(body):
 	targetArray.erase(body)

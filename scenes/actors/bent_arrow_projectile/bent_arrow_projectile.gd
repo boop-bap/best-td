@@ -2,7 +2,7 @@ class_name Projectile extends CharacterBody2D
 
 
 var target: CharacterBody2D
-var speed = 300
+var speed = 100
 var bulletDamage: int
 
 const SPIN: String = "spin"
