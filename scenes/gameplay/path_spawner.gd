@@ -1,7 +1,7 @@
 class_name Spawner extends Node2D
 
+const path: PackedScene = preload("res://scenes/gameplay/path_2.tscn")
 
-var path: PackedScene = preload("res://scenes/gameplay/path_2.tscn")
 var main: Node
 var timer: Timer
 

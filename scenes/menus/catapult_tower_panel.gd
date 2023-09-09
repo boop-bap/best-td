@@ -1,8 +1,8 @@
 extends Panel
 
-
 @onready var tower = preload("res://scenes/actors/catapult_tower/catapult_tower.tscn")
 var currentTower
+
 
 func _on_gui_input(event:InputEventMouse):
 	var tempTower = tower.instantiate()

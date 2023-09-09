@@ -3,6 +3,7 @@ extends TileMap
 var main: Node
 var spawner: Spawner
 
+
 func _ready() -> void:
 	main = get_parent()
 	spawner = Spawner.new(main)	

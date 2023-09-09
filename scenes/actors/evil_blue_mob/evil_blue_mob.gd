@@ -1,14 +1,13 @@
 class_name Mob extends CharacterBody2D
 
+const WALK_ANIMATION: String = "walk"
+const AMOUNT_FOR_KILL: int = 10
 
 @export var speed: int = 50
 var health: int = 1
 var main: Node
 
 var focused = false
-
-const WALK_ANIMATION: String = "walk"
-const AMOUNT_FOR_KILL: int = 10
 
 
 func _ready() -> void:

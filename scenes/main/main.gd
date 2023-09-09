@@ -1,5 +1,7 @@
 extends Node
 
+@onready var first_scene = preload("res://scenes/menus/main_menu.tscn")
+
 var resources: int
 var max_resources: int
 
@@ -11,7 +13,6 @@ var max_ammo: int
 
 var game_speed_multiplier: int = 1
 
-@onready var first_scene = preload("res://scenes/menus/main_menu.tscn")
 
 func _ready() -> void:
 	start_game()

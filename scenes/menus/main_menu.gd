@@ -2,6 +2,7 @@ extends Control
 
 var main: Node
 
+
 func _ready() -> void:
 	main = get_tree().current_scene
 
