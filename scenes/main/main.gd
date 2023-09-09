@@ -1,5 +1,7 @@
 extends Node
 
+@onready var first_scene = preload("res://scenes/menus/main_menu.tscn")
+
 var resources: int
 var max_resources: int
 
@@ -11,12 +13,11 @@ var max_ammo: int
 
 var game_speed_multiplier: int = 1
 
-@onready var first_scene = preload("res://scenes/menus/main_menu.tscn")
 
 func _ready() -> void:
 	start_game()
 
-func _input(event):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		game_speed_multiplier = 3
 	if event.is_action_released("ui_accept"):
@@ -24,7 +25,7 @@ func _input(event):
 	
 func start_game() -> void:
 	max_resources = 100
-	resources = 0
+	resources = 10
 	
 	max_health = 5
 	health = max_health

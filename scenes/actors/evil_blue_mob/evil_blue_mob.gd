@@ -1,12 +1,13 @@
-extends CharacterBody2D
+class_name Mob extends CharacterBody2D
+
+const WALK_ANIMATION: String = "walk"
+const AMOUNT_FOR_KILL: int = 10
 
 @export var speed: int = 50
 var health: int = 1
 var main: Node
 
 var focused = false
-
-const WALK_ANIMATION: String = "walk"
 
 
 func _ready() -> void:
@@ -28,12 +29,13 @@ func death() -> void:
 	# Path2D from "path_2" that is imported to the path spawner.
 	var path2d = get_parent().get_parent()
 	path2d.queue_free()
-
+	main.add_resources(AMOUNT_FOR_KILL)
+	
 func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if (event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT):
 		if (focused && main.ammo > 0):
 			main.ammo -= 1
-			main.add_resources(10)
+			main.add_resources(AMOUNT_FOR_KILL)
 			queue_free()
 
 func _on_mouse_entered() -> void:

@@ -1,14 +1,24 @@
-extends Node2D
+class_name Spawner extends Node2D
 
-@onready var path: PackedScene = preload("res://scenes/gameplay/path_2.tscn")
+const path: PackedScene = preload("res://scenes/gameplay/path_2.tscn")
+
 var main: Node
+var timer: Timer
 
-func _ready() -> void:
-	main = get_tree().current_scene
 
-func _process(_delta) -> void:
-	$Timer.wait_time = 1.0 / main.game_speed_multiplier
-
-func _on_timer_timeout() -> void:
+func _init(mainNode: Node) -> void:
+	main = mainNode
+	start_timer()
+	
+func start_timer() -> void:
+	timer = Timer.new()
+	timer.connect("timeout", self.on_timeout_complete)
+	timer.autostart = true
+	timer.wait_time = 1
+	
+	add_child(timer)
+	
+func on_timeout_complete() -> void:
 	var tempPath = path.instantiate()
 	add_child(tempPath)
+	

@@ -1,10 +1,12 @@
-extends CharacterBody2D
+class_name Tower extends CharacterBody2D
 
-var bullet: PackedScene = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_projectile.tscn")
+const SHOOT: String = "shoot"
+const bullet: PackedScene = preload("res://scenes/actors/bent_arrow_projectile/bent_arrow_projectile.tscn")
 
 var currentTarget:CharacterBody2D
 var pathToFollowName: String
 var timer: Timer
+var targetArray:Array[CharacterBody2D] = []
 
 var shootingSpeed: int = 100
 var shootingDelay: int = 1
@@ -12,7 +14,6 @@ var bulletDamage: int = 5
 
 var canShoot: bool = true
 
-const SHOOT: String = "shoot"
 
 func _process(delta: float) -> void:
 	if is_instance_valid(currentTarget):
@@ -23,33 +24,38 @@ func _process(delta: float) -> void:
 
 func _ready() -> void:
 	initialize_timer()
-	
-func initialize_timer():
+
+func initialize_timer() -> void:
 	timer = Timer.new()
 	timer.set_one_shot(true)
 	timer.set_wait_time(shootingDelay)
 	timer.connect("timeout", self.on_timeout_complete)
-
+	
 	add_child(timer)
 
 func on_timeout_complete() -> void:
 	canShoot = true
-	
-func _on_tower_body_entered(body) -> void:
+
+func _on_tower_body_entered(body: CharacterBody2D) -> void:
 	if body.name == "evilBlue":
-		currentTarget = body
-		pathToFollowName = body.get_node("../").get_parent().name
-		$AnimatedSprite2D/Animation.play(SHOOT)
+		targetArray.push_front(body)
+		var mobInArrayToShoot = targetArray.size() - 1
 		
-		if canShoot == true:
-			shoot()
+		if mobInArrayToShoot:
+			currentTarget = targetArray[mobInArrayToShoot]
+			pathToFollowName = body.get_node("../").get_parent().name
 			
-		pathToFollowName = ""
-		
-func shoot() -> void:
-	var tempBullet: Node = bullet.instantiate()
+			if canShoot == true:
+				$AnimatedSprite2D/Animation.play(SHOOT)
+				shoot(currentTarget)
+
+func _on_tower_body_exited(body: CharacterBody2D) -> void:
+	targetArray.erase(body)
+
+func shoot(target: CharacterBody2D) -> void:
+	var tempBullet = bullet.instantiate()
+	tempBullet.target = target
 	
-	tempBullet.pathName = pathToFollowName
 	tempBullet.bulletDamage = bulletDamage
 	tempBullet.global_position = $Aim.global_position
 	
@@ -57,5 +63,5 @@ func shoot() -> void:
 	
 	canShoot = false
 	timer.start()
-	
-	
+
+

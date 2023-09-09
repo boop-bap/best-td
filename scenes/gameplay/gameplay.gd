@@ -1,11 +1,17 @@
 extends TileMap
 
 var main: Node
+var spawner: Spawner
+
 
 func _ready() -> void:
 	main = get_parent()
+	spawner = Spawner.new(main)	
+	spawner.set_name("spawner")
+	
+	add_child(spawner)
 
-func _process(_delta) -> void:
+func _process(delta: float) -> void:
 	$Resources.text = "Resources: " + str(main.resources) + "/" + str(main.max_resources)
 	$Health.text = "Health: " + str(main.health) + "/" + str(main.max_health) 
 	$Ammo.text = "Ammo: " + str(main.ammo) + "/" + str(main.max_ammo) 
@@ -17,7 +23,7 @@ func _process(_delta) -> void:
 func _on_heal_pressed() -> void:
 	if main.spend_resources(100):		
 		main.health = main.max_health
-		
+
 func _on_reload_pressed() -> void:
 	main.ammo = main.max_ammo
 
