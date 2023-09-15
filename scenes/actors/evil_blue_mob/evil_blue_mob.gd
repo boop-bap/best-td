@@ -3,14 +3,18 @@ class_name Mob extends CharacterBody2D
 const WALK_ANIMATION: String = "walk"
 const AMOUNT_FOR_KILL: int = 10
 
+@onready var healthBar: Node2D = preload("res://scenes/gameplay/health_bar.tscn").instantiate()
 @export var speed: int = 50
-var health: int = 1
+
+var health: int = 100
 var main: Node
 
 var focused = false
 
 
 func _ready() -> void:
+	add_child(healthBar)
+	
 	main = get_tree().current_scene
 	self.input_pickable = true
 	$AnimatedSprite2D/Animation.play(WALK_ANIMATION)
@@ -20,7 +24,9 @@ func _process(delta: float) -> void:
 	if get_parent().get_progress_ratio() > 0.995:
 		main.health -= 1
 		queue_free()
-
+		
+	healthBar.progress = health
+	
 func _physics_process(delta) -> void:
 	if health <= 0:
 		death()

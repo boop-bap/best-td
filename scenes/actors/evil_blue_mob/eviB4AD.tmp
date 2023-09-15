@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://cvpxt7qf5puxf"]
+
+[ext_resource type="Script" path="res://scenes/actors/evil_blue_mob/evil_blue_mob.gd" id="1_61git"]
+[ext_resource type="Texture2D" uid="uid://c1504dlw68m1l" path="res://assets/tiles/colored.png" id="2_fr1tn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw4gy"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4kfp"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(306, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ici"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(323, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c13k5"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(340, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kqbc"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(357, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nayvt"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(374, 119, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl614"]
+atlas = ExtResource("2_fr1tn")
+region = Rect2(391, 119, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l3y4k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4kfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ici")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c13k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kqbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nayvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl614")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1evhq"]
+resource_name = "walk"
+length = 6.0
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hotfb"]
+_data = {
+"walk": SubResource("Animation_1evhq")
+}
+
+[node name="evilblue" type="CharacterBody2D"]
+script = ExtResource("1_61git")
+speed = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mw4gy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_l3y4k")
+animation = &"Move"
+frame = 1
+
+[node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
+speed_scale = 5.7
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_hotfb")
+}
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

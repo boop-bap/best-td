@@ -10,7 +10,7 @@ var targetArray:Array[CharacterBody2D] = []
 
 var shootingSpeed: int = 100
 var shootingDelay: int = 1
-var bulletDamage: int = 5
+var bulletDamage: int = 34
 
 var canShoot: bool = true
 
