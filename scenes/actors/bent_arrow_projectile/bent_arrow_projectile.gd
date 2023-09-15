@@ -5,7 +5,6 @@ const SPIN: String = "spin"
 var target: CharacterBody2D
 var bulletDamage: int
 var speed: int = 100
-var hello = "hello"
 
 
 func _physics_process(delta: float):
