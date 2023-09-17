@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg8higf7j07y"]
+
+[ext_resource type="PackedScene" uid="uid://cvpxt7qf5puxf" path="res://scenes/actors/evil_blue_mob/evil_blue_mob.tscn" id="1_wsb4t"]
+
+[sub_resource type="Curve2D" id="Curve2D_684xh"]
+bake_interval = 0.01
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5, 4, 0, 0, 0, 0, 128, 128, 0, 0, 0, 0, 192, 128, 0, 0, 0, 0, 192, 320, 0, 0, 0, 0, 1088, 320, 0, 0, 0, 0, 1088, 512, 0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 896, 512, 0, 0, 0, 0, 896, 512, 0, 0, 0, 0, 896, 512)
+}
+point_count = 10
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource("Curve2D_684xh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(5, 4)
+rotation = 0.789447
+
+[node name="evilBlue" parent="PathFollow2D" instance=ExtResource("1_wsb4t")]
+position = Vector2(3.60629, -1.4959)
+rotation = -0.785398
+up_direction = Vector2(0.707107, 0.707107)
+speed = 50

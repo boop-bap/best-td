@@ -1,0 +1,119 @@
+[gd_scene load_steps=13 format=3 uid="uid://bywjltmsu8mdu"]
+
+[ext_resource type="Script" path="res://scenes/actors/catapult_tower/catapult_tower.gd" id="1_cmf64"]
+[ext_resource type="Texture2D" uid="uid://bv8hb71ittjjy" path="res://assets/colored_packed.png" id="2_vgwqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpmp7"]
+size = Vector2(15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf44i"]
+atlas = ExtResource("2_vgwqn")
+region = Rect2(336, 80, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ok4"]
+atlas = ExtResource("2_vgwqn")
+region = Rect2(352, 80, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0x2l"]
+atlas = ExtResource("2_vgwqn")
+region = Rect2(368, 80, 15, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n60n1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf44i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ok4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0x2l")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ffgxx"]
+resource_name = "shoot"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uc2w"]
+_data = {
+"shoot": SubResource("Animation_ffgxx")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uhrpm"]
+radius = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spbft"]
+bg_color = Color(1, 0.156863, 0.160784, 0.47451)
+corner_radius_top_left = 450
+corner_radius_top_right = 450
+corner_radius_bottom_right = 450
+corner_radius_bottom_left = 450
+corner_detail = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3u1i"]
+size = Vector2(15, 15)
+
+[node name="CatapultTower" type="CharacterBody2D"]
+rotation = -1.5708
+scale = Vector2(2, 2)
+script = ExtResource("1_cmf64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mpmp7")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(8, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_n60n1")
+animation = &"shoot"
+
+[node name="Animation" type="AnimationPlayer" parent="AnimatedSprite2D"]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_0uc2w")
+}
+
+[node name="Tower" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower"]
+position = Vector2(3.05176e-05, 0)
+shape = SubResource("CircleShape2D_uhrpm")
+
+[node name="BulletContainer" type="Node" parent="."]
+
+[node name="ShootArea" type="Panel" parent="."]
+offset_left = -29.9999
+offset_top = -30.0001
+offset_right = 30.0001
+offset_bottom = 29.9999
+theme_override_styles/panel = SubResource("StyleBoxFlat_spbft")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v3u1i")
+
+[connection signal="body_entered" from="Tower" to="." method="_on_tower_body_entered"]
+[connection signal="body_exited" from="Tower" to="." method="_on_tower_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

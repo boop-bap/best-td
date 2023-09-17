@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://buvjgmrju42vm"]
+
+[ext_resource type="Script" path="res://scenes/menus/tower_upgrade.gd" id="1_2cuos"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frfop"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.227451, 0.717647, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxbfn"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.929412, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro0vy"]
+size = Vector2(110, 24)
+
+[node name="TowerUpgrade" type="Node2D"]
+script = ExtResource("1_2cuos")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 220.0
+offset_bottom = 48.0
+scale = Vector2(0.5, 0.5)
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 12.0
+offset_right = 191.0
+offset_bottom = 35.0
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/FlowContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_frfop")
+text = "UPGRADE"
+
+[node name="Button2" type="Button" parent="Panel/FlowContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxbfn")
+text = "SELL"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(55, 12)
+shape = SubResource("RectangleShape2D_ro0vy")
+
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
